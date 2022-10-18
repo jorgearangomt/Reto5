@@ -1,0 +1,48 @@
+body{
+    font-family: Verdana, serif;
+    background: white;
+}
+
+#prueba3{
+
+    justify-content: center;
+    position: center;
+    width: 900px;
+    margin: 50px auto;
+    border-radius: 10px;
+    border: 1px solid royalblue;
+}
+
+.btn4{
+    border: 2px solid darkblue;
+    margin-bottom: 20px;
+    padding: 4px;
+    width: 80px;
+    font-family: Arial,sans-serif;
+    border-radius: 4px;
+    cursor:pointer;
+    color: #0A0A0A;
+    background-size: 100%;
+    background: #DAD8D8;
+    transform: translate(310%, 50%);
+}
+
+h2{
+    text-align: center;
+    font-family: Verdana, sans-serif;
+    color: black;
+}
+
+h3{
+    text-align: center;
+    font-family: Verdana, sans-serif;
+    color: black;
+}
+
+#iframeHolder{
+
+    justify-content: center;
+    position: center;
+    margin: 50px auto;
+
+}

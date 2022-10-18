@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Score</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/ScoreScript.js"></script>
+<body>
+<h1>PUNTAJE</h1>
+<label for="scoreIdScore">Id: </label><input id="scoreIdScore" type="number"><br>
+<label for="scoreScore">Puntaje: </label><input id="scoreScore" type="number"><br>
+<button onclick="getScore()">Ver</button><button onclick="saveScore()">Guardar</button><button onclick="updateScore()">Actualizar</button><button onclick="deleteScore()">Borrar</button>
+<div id="score"></div>
+</body>
+</html>
