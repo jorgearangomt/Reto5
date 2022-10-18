@@ -50,14 +50,33 @@ function saveScore(){
 }
 function getDetailScore(idScore){
     $.ajax({
-        url: "api/Score/all",
+        url: "api/Score/"+ idScore,
         type: 'GET',
         dataType: 'json',
         success: function (score){
             let data={
-                idScore: $("#scoreIdScore").val(score[0].idScore),
-                score: $("#scoreScore").val(score[0].score)
+                idScore: $("#scoreIdScore").val(score.idScore),
+                score: $("#scoreScore").val(score.score)
             }
+            getScore();
+            console.log(getScoreInfo());
+        },
+        error: function(xhr, status){
+            alert('Ha sucedido un problema');
+        }
+    });
+}
+function updateScore(){
+    $.ajax({
+        url: "api/Score/update",
+        type: 'PUT',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(getScoreInfo()),
+        success: function (score){
+            getScore();
+            console.log(getScoreInfo());
+            cleanScoreInfo();
         },
         error: function(xhr, status){
             alert('Ha sucedido un problema');

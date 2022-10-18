@@ -9,7 +9,7 @@ function getClients(){
         success: function(clients){
             $("#clients").empty();
             for(i= 0; i< clients.length; i++){
-                $("#clients").append("<option value='"+clients[i].idClient+"'>"+clients[i].idClient+ " "+ clients[i].name+ " "+ clients[i].age+ " "+ clients[i].email+ "</option><br><button class='btn2' onclick='getDetailClients("+clients[i].idClient+")'>Seleccionar</button>&nbsp<button class='btn2' onclick='deleteClients("+clients[i].idClient+")'>Borrar</button><br>");
+                $("#clients").append("<option value='"+clients[i].idClient+"'>"+clients[i].idClient+ " "+ clients[i].name+ " "+ clients[i].age+ " "+ clients[i].email+ "</option><button onclick='getDetailClients("+clients[i].idClient+")'>Seleccionar</button><button onclick='deleteClients("+clients[i].idClient+")'>Borrar</button><br>");
             }
         },
         error: function (xhr, status){
@@ -56,17 +56,36 @@ function saveClients(){
 }
 function getDetailClients(idClient){
     $.ajax({
-        url: "api/Client/all",
+        url: "api/Client/"+idClient,
         type: 'GET',
         dataType: 'json',
         success: function (clients){
             let data={
-                idClient: $("#clientsIdClient").val(clients[0].idClient),
-                email: $("#clientsEmail").val(clients[0].email),
-                name: $("#clientsName").val(clients[0].name),
-                age: $("#clientsAge").val(clients[0].age),
-                password: $("#clientsPassword").val(clients[0].password)
+                idClient: $("#clientsIdClient").val(clients.idClient),
+                email: $("#clientsEmail").val(clients.email),
+                name: $("#clientsName").val(clients.name),
+                age: $("#clientsAge").val(clients.age),
+                password: $("#clientsPassword").val(clients.password)
             }
+            getClients();
+            console.log(getClientsInfo());
+        },
+        error: function(xhr, status){
+            alert('Ha sucedido un problema');
+        }
+    });
+}
+function updateClients(){
+    $.ajax({
+        url: "api/Client/update",
+        type: 'PUT',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(getClientsInfo()),
+        success: function (clients){
+            getClients();
+            console.log(getClientsInfo());
+            cleanClientsInfo();
         },
         error: function(xhr, status){
             alert('Ha sucedido un problema');

@@ -3,32 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Reservation</title>
-    <link rel="stylesheet" href="StyleReservation.css"/>
 </head>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/ReservationScript.js"></script>
 <script type="text/javascript" src="js/LibraryScript.js"></script>
 <script type="text/javascript" src="js/ClientScript.js"></script>
 <script type="text/javascript" src="js/ScoreScript.js"></script>
 <body>
-
-<div id="prueba6">
-<h2>RESERVACIÓN</h2>
-<label class="inp" for="reservationsIdReservation">Id: </label><br>
-<input class="lbn" id="reservationsIdReservation" type="number"><br>
-<label class="inp" for="reservationsStartDate">Fecha: </label><input id="reservationsStartDate" type="date"><br>
-<label class="inp" for="reservationsDevolutionDate">Fecha de devolución: </label><input id="reservationsDevolutionDate" type="date"><br>
-<label class="inp" for="reservationsStatus">Estado: </label><br>
-<input class="lbn" id="reservationsStatus" type="text"><br>
-<label class="inp" for="libs">Librería: </label><select class="sele" id="libs"><option value="1"></option></select><br>
-<label class="inp" for="clients">Cliente: </label>&nbsp<select class="sele" id="clients"><option value="1"></option></select><br>
-<label class="inp" for="scores">Puntaje: </label><select class="sele" id="scores"><option value="1"></option></select><br>
-<button class="btn7" onclick="getReservations()">Ver</button>
-<button class="btn7" onclick="saveReservations()">Guardar</button>
-<button class="btn7" onclick="updateReservations()">Actualizar</button>
-<button class="btn7" onclick="deleteReservations()">Borrar</button>
+<h1>RESERVACIÓN</h1>
+<label for="reservationsIdReservation">Id: </label><input id="reservationsIdReservation" type="number"><br>
+<label for="reservationsStartDate">Fecha: </label><input id="reservationsStartDate" type="date"><br>
+<label for="reservationsDevolutionDate">Fecha de devolución: </label><input id="reservationsDevolutionDate" type="date"><br>
+<label for="reservationsStatus">Estado: </label><input id="reservationsStatus" type="text"><br>
+<label for="libs">Librería: </label><select id="libs"><option value="1"></option></select><br>
+<label for="clients">Cliente: </label><select id="clients"><option value="1"></option></select><br>
+<label for="score">Puntaje: </label><select id="score"><option value="1"></option></select><br>
+<button onclick="saveReservations()">Guardar</button><button onclick="updateReservations()">Actualizar</button>
 <div id="reservations"></div>
-</div>
 </body>
 </html>

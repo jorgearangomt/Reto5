@@ -3,30 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Client</title>
-    <link rel="stylesheet" href="StyleClient.css"/>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/ClientScript.js"></script>
 <body>
-
-<div id="prueba2">
-
-<h2>CLIENTE</h2>
-<label class="inp"  for="clientsIdClient">Id: </label><br>
-    <input class="lbn" class="lbn" id="clientsIdClient" type="number"><br>
-<label  class="inp" for="clientsName">Nombre: </label><br>
-    <input class="lbn" id="clientsName" type="text"><br>
-<label class="inp" for="clientsEmail">Correo: </label><br>
-    <input class="lbn" id="clientsEmail" type="email"><br>
-<label class="inp" for="clientsAge">Edad: </label><br>
-    <input class="lbn" id="clientsAge" type="number"><br>
-<label class="inp" for="clientsPassword">Contraseña: </label><br>
-    <input class="lbn" id="clientsPassword" type="password"><br>
-<button class="btn1" onclick="getClients()">Ver</button>
-<button class="btn1" onclick="saveClients()">Guardar</button>
-<button class="btn1" onclick="updateClients()">Actualizar</button>
-<button class="btn1" onclick="deleteClients()">Borrar</button>
-</div>
+<h1>CLIENTE</h1>
+<label for="clientsIdClient">Id: </label><input id="clientsIdClient" type="number"><br>
+<label for="clientsName">Nombre: </label><input id="clientsName" type="text"><br>
+<label for="clientsEmail">Correo: </label><input id="clientsEmail" type="email"><br>
+<label for="clientsAge">Edad: </label><input id="clientsAge" type="number"><br>
+<label for="clientsPassword">Contraseña: </label><input id="clientsPassword" type="password"><br>
+<button onclick="saveClients()">Guardar</button><button onclick="updateClients()">Actualizar</button>
 <div id="clients"></div>
 </body>
 </html>

@@ -1,15 +1,17 @@
 $("document").ready(function (){
-    getCategoryinfo();
+    getCategory();
+    console.log(getCategoryinfo());
+    cleanCategoryInfo();
 });
 function getCategory(){
     $.ajax({
         url: "/api/Category/all",
         type: 'GET',
-        dataType: 'JSON',
+        dataType: 'json',
         success: function (category){
             $("#category").empty();
             for(i= 0; i< category.length; i++){
-                $("#category").append("<option &nbsp value='"+category[i].id+"'>"+ category[i].id+ "  "+ category[i].name+ "  "+ category[i].description+ "</option>&nbsp<button class='btn2' onclick='getDetailCategory("+category[i].id+")'>Seleccionar</button>&nbsp&nbsp<button class='btn2' onclick='deleteCategory("+category[i].id+")'>Borrar</button><br>");
+                $("#category").append("<option value='"+category[i].id+"'>"+ category[i].id+ " "+ category[i].name+ " "+ category[i].description+ "</option><button onclick='getDetailCategory("+category[i].id+")'>Seleccionar</button><button onclick='deleteCategory("+category[i].id+")'>Borrar</button><br>");
             }
         },
         error: function (xhr, status){
@@ -60,7 +62,10 @@ function getDetailCategory(id){
                 id: $("#categoryId").val(category.id),
                 name: $("#categoryName").val(category.name),
                 description: $("#categoryDescription").val(category.description)
+
             }
+            getCategory();
+            console.log(getCategoryinfo());
         },
         error: function(xhr, status){
             alert('Ha sucedido un problema');

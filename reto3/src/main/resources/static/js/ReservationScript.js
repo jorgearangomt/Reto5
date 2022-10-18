@@ -12,7 +12,7 @@ function getReservations(){
         success: function (reservations){
             $("#reservations").empty();
             for(i= 0; i< reservations.length; i++){
-                $("#reservations").append("<option value='"+reservations[i].idReservation+"'>"+ reservations[i].idReservation+ " "+reservations[i].startDate+ " "+reservations[i].devolutionDate+ " "+ reservations[i].status+ " "+ reservations[i].libs+ " "+ reservations[i].clients+ " "+ reservations[i].scores+ "</option><button onclick='getDetailReservations("+reservations[i].idReservation+")'>Seleccionar</<button><button onclick='deleteReservations("+reservations[i].idReservation+")'>Borrar</button><br>");
+                $("#reservations").append("<option value='"+reservations[i].idReservation+"'>"+ reservations[i].idReservation+ " "+reservations[i].startDate+ " "+reservations[i].devolutionDate+ " "+ reservations[i].status+ " "+ reservations[i].libs+ " "+ reservations[i].clients+ " "+ reservations[i].score+ "</option><button onclick='getDetailReservations("+reservations[i].idReservation+")'>Seleccionar</<button><button onclick='deleteReservations("+reservations[i].idReservation+")'>Borrar</button><br>");
             }
         },
         error: function (xhr, status){
@@ -32,8 +32,8 @@ function getReservationsInfo(){
         clients:{
             id: $("#clients option:selected").val()
         },
-        scores:{
-            id: $("#scores option:selected").val()
+        score:{
+            id: $("#score option:selected").val()
         }
     }
     return data;
@@ -50,8 +50,8 @@ function cleanReservationsInfo(){
         clients:{
             id: $("#clients option:selected").val("")
         },
-        scores:{
-            id: $("#scores option:selected").val("")
+        score:{
+            id: $("#score option:selected").val("")
         }
     }
     return data;
@@ -75,25 +75,44 @@ function saveReservations(){
 }
 function getDetailReservations(idReservation){
     $.ajax({
-        url: "api/Reservation/all",
+        url: "api/Reservation/"+ idReservation,
         type: 'GET',
         dataType: 'json',
         success: function (reservations){
             let data={
-                idReservation: $("#reservationsIdReservation").val(reservations[0].idReservation),
-                startDate: $("#reservationsStartDate").val(reservations[0].startDate),
-                devolutionDate: $("#reservationsDevolutionDate").val(reservations[0].devolutionDate),
-                status: $("#reservationsStatus").val(reservations[0].status),
+                idReservation: $("#reservationsIdReservation").val(reservations.idReservation),
+                startDate: $("#reservationsStartDate").val(reservations.startDate),
+                devolutionDate: $("#reservationsDevolutionDate").val(reservations.devolutionDate),
+                status: $("#reservationsStatus").val(reservations.status),
                 libs:{
-                    id: $("#libs option:selected").val(reservations[0].libs)
+                    id: $("#libs option:selected").val(reservations.libs)
                 },
                 clients:{
-                    id: $("#clients option:selected").val(reservations[0].clients)
+                    id: $("#clients option:selected").val(reservations.clients)
                 },
-                scores:{
-                    id: $("#scores option:selected").val(reservations[0].scores)
+                score:{
+                    id: $("#score option:selected").val(reservations.score)
                 }
             }
+            getReservations();
+            console.log(getReservationsInfo());
+        },
+        error: function(xhr, status){
+            alert('Ha sucedido un problema');
+        }
+    });
+}
+function updateReservations(){
+    $.ajax({
+        url: "api/Reservation/update",
+        type: 'PUT',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(getReservationsInfo()),
+        success: function (reservations){
+            getReservations();
+            console.log(getReservationsInfo());
+            cleanReservationsInfo();
         },
         error: function(xhr, status){
             alert('Ha sucedido un problema');

@@ -64,20 +64,39 @@ function saveMessages(){
 }
 function getDetailMessages(idMessage){
     $.ajax({
-        url: "api/Message/all",
+        url: "api/Message/"+ idMessage,
         type: 'GET',
         dataType: 'json',
         success: function (messages){
             let data={
-                idMessage: $("#messagesIdMessage").val(messages[0].idMessage),
-                messageText: $("#messagesMessageText").val(messages[0].messageText),
+                idMessage: $("#messagesIdMessage").val(messages.idMessage),
+                messageText: $("#messagesMessageText").val(messages.messageText),
                 libs:{
-                    id: $("#libs option:selected").val(messages[0].libs)
+                    id: $("#libs option:selected").val(messages.libs)
                 },
                 clients:{
-                    id: $("#clients option:selected").val(messages[0].clients)
+                    id: $("#clients option:selected").val(messages.clients)
                 }
             }
+            getMessages();
+            console.log(getMessagesInfo());
+        },
+        error: function(xhr, status){
+            alert('Ha sucedido un problema');
+        }
+    });
+}
+function updateMessages(){
+    $.ajax({
+        url: "api/Message/update",
+        type: 'PUT',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(getMessagesInfo()),
+        success: function (messages){
+            getMessages();
+            console.log(getMessagesInfo());
+            cleanMessagesInfo();
         },
         error: function(xhr, status){
             alert('Ha sucedido un problema');
