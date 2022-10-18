@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Client</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/ClientScript.js"></script>
+<body>
+<h1>CLIENTE</h1>
+<label for="clientsIdClient">Id: </label><input id="clientsIdClient" type="number"><br>
+<label for="clientsName">Nombre: </label><input id="clientsName" type="text"><br>
+<label for="clientsEmail">Correo: </label><input id="clientsEmail" type="email"><br>
+<label for="clientsAge">Edad: </label><input id="clientsAge" type="number"><br>
+<label for="clientsPassword">Contraseña: </label><input id="clientsPassword" type="password"><br>
+<button onclick="saveClients()">Guardar</button><button onclick="updateClients()">Actualizar</button>
+<div id="clients"></div>
+</body>
+</html>
